@@ -10,6 +10,31 @@ go install
 
 ### Usage
 
+```shell
+NAME:
+   todo - A simple tool to manage your todo list
+
+USAGE:
+   todo [global options] command [command options] [arguments...]
+
+VERSION:
+   v1.0.0
+
+DESCRIPTION:
+   A simple tool to manage your todo list
+
+COMMANDS:
+   add      add todo
+   edit     edit todo
+   ls       show config fund list
+   rm       remove todo
+   help, h  Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --help, -h     show help (default: false)
+   --version, -v  print the version (default: false)
+```
+
 #### ls
 
 ```shell
