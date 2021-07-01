@@ -44,7 +44,7 @@ todo ls [command options]
 - -a: show all todo list (default: false)
 - -d: show todo list of one date (default: today)
 
-##### show all todo list
+###### show all todo list
 
 ```shell
 ➜  todo git:(master) ✗ todo ls -a
@@ -54,7 +54,7 @@ todo ls [command options]
 3     c3emlko6n88innjbuf30     20210701(today)     123         High      Completed      2021-07-01 15:12:19
 ```
 
-##### show todo list of today
+###### show todo list of today
 
 ```shell
 ➜  todo git:(master) ✗ todo ls   
@@ -63,7 +63,7 @@ todo ls [command options]
 2     c3emlko6n88innjbuf30     20210701     123         High      Completed      2021-07-01 15:12:19
 ```
 
-##### show todo list of one date
+###### show todo list of one date
 
 ```shell
 ➜  todo git:(master) ✗ todo ls -d 20210630
@@ -110,14 +110,14 @@ edit todo c3en56g6n88j8kosta40 success
 todo rm [command options] [id1: unique todo id] [id2] ... [idn]
 ```
 
-##### remove todo by id
+###### remove todo by id
 
 ```shell
 ➜  todo git:(master) ✗ todo rm c3emlko6n88innjbuf30
 remove todo c3emlko6n88innjbuf30 success
 ```
 
-##### remove all todos
+###### remove all todos
 
 ```shell
 ➜  todo git:(master) ✗ todo rm -a
