@@ -79,11 +79,22 @@ edit todo c3en56g6n88j8kosta40 success
 
 #### rm
 
+- -a: show all todo list (default: false)
+
 ```shell
 todo rm [command options] [id1: unique todo id] [id2] ... [idn]
 ```
 
+##### remove todo by id
+
 ```shell
 ➜  todo git:(master) ✗ todo rm c3emlko6n88innjbuf30
 remove todo c3emlko6n88innjbuf30 success
+```
+
+##### remove all todos
+
+```shell
+➜  todo git:(master) ✗ todo rm -a
+remove all todos success
 ```
