@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/rs/xid"
-	"github.com/urfave/cli/v2"
 	"github.com/jormin/todo/config"
 	"github.com/jormin/todo/entity"
 	"github.com/jormin/todo/errors"
+	"github.com/rs/xid"
+	"github.com/urfave/cli/v2"
 )
 
 // init
@@ -50,29 +50,46 @@ func Add(ctx *cli.Context) error {
 	if ctx.Args().Len() == 0 {
 		return errors.MissingRequiredArgumentErr
 	}
-	date := ctx.String("d")
-	level := ctx.Int("l")
-	status := ctx.Int("s")
-	if date != "" {
-		if date == "today" {
-			date = time.Now().Format("20060102")
-		} else {
-			_, err := time.Parse("20060102", date)
-			if err != nil {
+	content := ctx.Args().Get(0)
+	curDate := time.Now().Format("20060102")
+	date := curDate
+	status := entity.TodoStatusIncomplete
+	level := entity.TodoLevelLow
+
+	if content == "" {
+		return errors.FlagContentValidateErr
+	}
+	flags := ctx.FlagNames()
+	for _, v := range flags {
+		switch v {
+		case "d":
+			date = ctx.String("d")
+			if date == "" {
 				return errors.FlagDateValidateErr
+			}
+			if date == "today" {
+				date = curDate
+			} else {
+				_, err := time.Parse("20060102", date)
+				if err != nil {
+					return errors.FlagDateValidateErr
+				}
+			}
+		case "l":
+			level = ctx.Int("l")
+			if level < entity.TodoLevelLow || level > entity.TodoLevelHigh {
+				return errors.FlagLevelValidateErr
+			}
+		case "s":
+			status = ctx.Int("s")
+			if status < entity.TodoStatusIncomplete || status > entity.TodoStatusCompleted {
+				return errors.FlagStatusValidateErr
 			}
 		}
 	}
-	if level < entity.TodoLevelLow || level > entity.TodoLevelHigh {
-		return errors.FlagLevelValidateErr
-	}
-	if status < entity.TodoStatusIncomplete || status > entity.TodoStatusCompleted {
-		return errors.FlagStatusValidateErr
-	}
-	content := ctx.Args().Get(0)
 	curTime := time.Now().Unix()
 	id := xid.New().String()
-	(*data.Todos)[id] = entity.Todo{
+	todo := entity.Todo{
 		ID:         id,
 		Content:    content,
 		Date:       date,
@@ -81,6 +98,7 @@ func Add(ctx *cli.Context) error {
 		CreateTime: curTime,
 		UpdateTime: curTime,
 	}
+	(*data.Todos)[id] = todo
 	fmt.Println(id)
 	return nil
 }
