@@ -107,7 +107,7 @@ edit todo c3en56g6n88j8kosta40 success
 
 #### rm
 
-- -a: show all todo list (default: false)
+- -a: remove all todo list (default: false)
 
 ```shell
 todo rm [command options] [id1: unique todo id] [id2] ... [idn]
