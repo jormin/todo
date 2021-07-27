@@ -133,7 +133,7 @@ remove all todos success
 - -a: do or undo(with -r) all todo (default: false)
 - -r: undo todo (default: false)
 
-##### do or undo the id
+###### do or undo by id
 
 ```shell
 ➜  todo git:(master) ✗ todo do c4008v06n88n0ufiph60
@@ -143,7 +143,7 @@ do todo c4008v06n88n0ufiph60 success
 undo todo c4008v06n88n0ufiph60 success
 ```
 
-##### do or undo all todos
+###### do or undo all todos
 
 ```shell
 ➜  todo git:(master) ✗ todo do -a
