@@ -25,6 +25,7 @@ DESCRIPTION:
 
 COMMANDS:
    add      add todo
+   do       do or undo(with -r) todo
    edit     edit todo
    ls       show config fund list
    rm       remove todo
@@ -49,9 +50,9 @@ todo ls [command options]
 ```shell
 ➜  todo git:(master) ✗ todo ls -a
 #     ID                       Date                Level     Status         Content
-1     c3vs8ug6n88ksi3u9nr0     20210727(today)     Low       Incomplete     test
-2     c3vt4k86n88lrorie270     20210727(today)     Low       Incomplete     aaa
-3     c3vt4p86n88lrqd1j170     20210727(today)     Low       Incomplete     bbb
+1     c3vs8ug6n88ksi3u9nr0     20210727(today)     Low       Uncompleted     test
+2     c3vt4k86n88lrorie270     20210727(today)     Low       Uncompleted     aaa
+3     c3vt4p86n88lrqd1j170     20210727(today)     Low       Uncompleted     bbb
 4     c3vt4ug6n88lrsd7il8g     20210726            Low       Completed      ccc
 
 ```
@@ -61,9 +62,9 @@ todo ls [command options]
 ```shell
 ➜  todo git:(master) ✗ todo ls
 #     ID                       Date         Level     Status         Content
-1     c3vt4k86n88lrorie270     20210727     Low       Incomplete     aaa
-2     c3vt4p86n88lrqd1j170     20210727     Low       Incomplete     bbb
-3     c3vs8ug6n88ksi3u9nr0     20210727     Low       Incomplete     test
+1     c3vt4k86n88lrorie270     20210727     Low       Uncompleted     aaa
+2     c3vt4p86n88lrqd1j170     20210727     Low       Uncompleted     bbb
+3     c3vs8ug6n88ksi3u9nr0     20210727     Low       Uncompleted     test
 ```
 
 ###### show todo list of one date
@@ -71,7 +72,7 @@ todo ls [command options]
 ```shell
 ➜  todo git:(master) ✗ todo ls -d 20210630
 #     ID                       Date         Content     Level     Status         UpdateTime
-1     c3emlm86n88invcs8s40     20210630     aaa         Low       Incomplete     2021-07-01 15:12:25
+1     c3emlm86n88invcs8s40     20210630     aaa         Low       Uncompleted     2021-07-01 15:12:25
 ```
 
 #### add
@@ -125,4 +126,33 @@ remove todo c3emlko6n88innjbuf30 success
 ```shell
 ➜  todo git:(master) ✗ todo rm -a
 remove all todos success
+```
+
+#### do or undo
+
+- -a: do or undo(with -r) all todo (default: false)
+- -r: undo todo (default: false)
+
+##### do or undo the id
+
+```shell
+➜  todo git:(master) ✗ todo do c4008v06n88n0ufiph60
+do todo c4008v06n88n0ufiph60 success
+
+➜  todo git:(master) ✗ todo do -r c4008v06n88n0ufiph60
+undo todo c4008v06n88n0ufiph60 success
+```
+
+##### do or undo all todos
+
+```shell
+➜  todo git:(master) ✗ todo do -a
+do todo c3vt9u86n88m1re06t1g success
+do todo c3vtalg6n88m1v99t9j0 success
+do todo c4008v06n88n0ufiph60 success
+
+➜  todo git:(master) ✗ todo do -a -r
+undo todo c3vt9u86n88m1re06t1g success
+undo todo c3vtalg6n88m1v99t9j0 success
+undo todo c4008v06n88n0ufiph60 success
 ```

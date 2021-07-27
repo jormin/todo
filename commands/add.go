@@ -53,7 +53,7 @@ func Add(ctx *cli.Context) error {
 	content := ctx.Args().Get(0)
 	curDate := time.Now().Format("20060102")
 	date := curDate
-	status := entity.TodoStatusIncomplete
+	status := entity.TodoStatusUncompleted
 	level := entity.TodoLevelLow
 
 	if content == "" {
@@ -82,7 +82,7 @@ func Add(ctx *cli.Context) error {
 			}
 		case "s":
 			status = ctx.Int("s")
-			if status < entity.TodoStatusIncomplete || status > entity.TodoStatusCompleted {
+			if status < entity.TodoStatusUncompleted || status > entity.TodoStatusCompleted {
 				return errors.FlagStatusValidateErr
 			}
 		}
@@ -98,7 +98,7 @@ func Add(ctx *cli.Context) error {
 		CreateTime: curTime,
 		UpdateTime: curTime,
 	}
-	(*data.Todos)[id] = todo
+	data.Todos[id] = todo
 	fmt.Println(id)
 	return nil
 }

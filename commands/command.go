@@ -6,9 +6,9 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/jormin/todo/entity"
 	"github.com/mitchellh/go-homedir"
 	"github.com/urfave/cli/v2"
-	"github.com/jormin/todo/entity"
 )
 
 var data *entity.Data
@@ -19,7 +19,7 @@ func GetData() *entity.Data {
 		data = NewData()
 	}
 	if data.Todos == nil {
-		data.Todos = &(map[string]entity.Todo{})
+		data.Todos = make(map[string]entity.Todo)
 	}
 	return data
 }
@@ -27,7 +27,7 @@ func GetData() *entity.Data {
 // Get new data
 func NewData() *entity.Data {
 	return &entity.Data{
-		Todos: &(map[string]entity.Todo{}),
+		Todos: make(map[string]entity.Todo),
 	}
 }
 

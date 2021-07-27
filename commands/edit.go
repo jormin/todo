@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/urfave/cli/v2"
 	"github.com/jormin/todo/config"
 	"github.com/jormin/todo/entity"
 	"github.com/jormin/todo/errors"
+	"github.com/urfave/cli/v2"
 )
 
 // init
@@ -56,7 +56,7 @@ func Edit(ctx *cli.Context) error {
 		return errors.MissingRequiredArgumentErr
 	}
 	id := ctx.Args().Get(0)
-	todo, ok := (*data.Todos)[id]
+	todo, ok := data.Todos[id]
 	if !ok {
 		return errors.TodoNotExistsErr
 	}
@@ -91,13 +91,13 @@ func Edit(ctx *cli.Context) error {
 			todo.Level = level
 		case "s":
 			status := ctx.Int("s")
-			if status < entity.TodoStatusIncomplete || status > entity.TodoStatusCompleted {
+			if status < entity.TodoStatusUncompleted || status > entity.TodoStatusCompleted {
 				return errors.FlagStatusValidateErr
 			}
 			todo.Status = status
 		}
 	}
-	(*data.Todos)[id] = todo
+	data.Todos[id] = todo
 	fmt.Printf("edit todo %s success\n", todo.ID)
 	return nil
 }

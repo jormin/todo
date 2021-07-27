@@ -69,7 +69,7 @@ func List(ctx *cli.Context) error {
 
 	// deal todos
 	var todos []entity.Todo
-	for _, item := range *data.Todos {
+	for _, item := range data.Todos {
 		if !showAll && item.Date != date {
 			continue
 		}

@@ -2,7 +2,7 @@ package entity
 
 // Data
 type Data struct {
-	Todos *map[string]Todo `json:"todos" remark:"存储数据"`
+	Todos map[string]Todo `json:"todos" remark:"存储数据"`
 }
 
 type Todo struct {
@@ -16,11 +16,11 @@ type Todo struct {
 }
 
 const (
-	TodoLevelLow         = 1 // level: low
-	TodoLevelMiddle      = 2 // level: middle
-	TodoLevelHigh        = 3 // level: high
-	TodoStatusIncomplete = 0 // status: incomplete
-	TodoStatusCompleted  = 1 // status: completed
+	TodoLevelLow          = 1 // level: low
+	TodoLevelMiddle       = 2 // level: middle
+	TodoLevelHigh         = 3 // level: high
+	TodoStatusUncompleted = 0 // status: incomplete
+	TodoStatusCompleted   = 1 // status: completed
 )
 
 // level texts
@@ -32,6 +32,6 @@ var TodoLevelTexts = map[int]string{
 
 // status texts
 var TodoStatusTexts = map[int]string{
-	0: "Incomplete",
+	0: "Uncompleted",
 	1: "Completed",
 }

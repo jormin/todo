@@ -42,7 +42,7 @@ func Remove(ctx *cli.Context) error {
 		}
 	}
 	if removeAll {
-		*data.Todos = map[string]entity.Todo{}
+		data.Todos = map[string]entity.Todo{}
 		fmt.Println("remove all todos success")
 	} else {
 		if ctx.Args().Len() == 0 {
@@ -50,9 +50,9 @@ func Remove(ctx *cli.Context) error {
 		}
 		for i := 0; i < ctx.Args().Len(); i++ {
 			id := ctx.Args().Get(i)
-			for index, item := range *data.Todos {
+			for index, item := range data.Todos {
 				if item.ID == id {
-					delete(*data.Todos, index)
+					delete(data.Todos, index)
 					fmt.Printf("remove todo %s success\n", item.ID)
 				}
 			}
