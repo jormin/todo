@@ -48,19 +48,22 @@ todo ls [command options]
 
 ```shell
 ➜  todo git:(master) ✗ todo ls -a
-#     ID                       Date                Content     Level     Status         UpdateTime
-1     c3en56g6n88j8kosta40     20210701(today)     aaa         Low       Incomplete     2021-07-01 15:45:30
-2     c3emlm86n88invcs8s40     20210630            aaa         Low       Incomplete     2021-07-01 15:12:25
-3     c3emlko6n88innjbuf30     20210701(today)     123         High      Completed      2021-07-01 15:12:19
+#     ID                       Date                Level     Status         Content
+1     c3vs8ug6n88ksi3u9nr0     20210727(today)     Low       Incomplete     test
+2     c3vt4k86n88lrorie270     20210727(today)     Low       Incomplete     aaa
+3     c3vt4p86n88lrqd1j170     20210727(today)     Low       Incomplete     bbb
+4     c3vt4ug6n88lrsd7il8g     20210726            Low       Completed      ccc
+
 ```
 
 ###### show todo list of today
 
 ```shell
-➜  todo git:(master) ✗ todo ls   
-#     ID                       Date         Content     Level     Status         UpdateTime
-1     c3en56g6n88j8kosta40     20210701     aaa         Low       Incomplete     2021-07-01 15:45:30
-2     c3emlko6n88innjbuf30     20210701     123         High      Completed      2021-07-01 15:12:19
+➜  todo git:(master) ✗ todo ls
+#     ID                       Date         Level     Status         Content
+1     c3vt4k86n88lrorie270     20210727     Low       Incomplete     aaa
+2     c3vt4p86n88lrqd1j170     20210727     Low       Incomplete     bbb
+3     c3vs8ug6n88ksi3u9nr0     20210727     Low       Incomplete     test
 ```
 
 ###### show todo list of one date

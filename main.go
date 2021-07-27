@@ -4,9 +4,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/urfave/cli/v2"
 	_ "github.com/jormin/todo/commands"
 	"github.com/jormin/todo/config"
+	"github.com/urfave/cli/v2"
 )
 
 func main() {
