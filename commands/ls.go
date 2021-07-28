@@ -29,9 +29,21 @@ func init() {
 				},
 				&cli.StringFlag{
 					Name:        "d",
-					Usage:       "show todo list of one date",
+					Usage:       "show todo list of one date, it's invalid when there is the flag a",
 					Required:    false,
 					DefaultText: "today",
+				},
+				&cli.IntFlag{
+					Name:        "l",
+					Usage:       "the level of todo, optional values are 1-3, 1 is the minimum level and 3 is the maximum level",
+					Required:    false,
+					DefaultText: "1",
+				},
+				&cli.IntFlag{
+					Name:        "s",
+					Usage:       "the status of todo, optional values are 0-2[uncompleted|completed|discarded]",
+					Required:    false,
+					DefaultText: "0",
 				},
 			},
 			Before: BeforeFunc,
@@ -45,6 +57,8 @@ func List(ctx *cli.Context) error {
 	showAll := false
 	curDate := time.Now().Format("20060102")
 	date := curDate
+	status := -1
+	level := -1
 
 	flags := ctx.FlagNames()
 	for _, v := range flags {
@@ -64,6 +78,16 @@ func List(ctx *cli.Context) error {
 					return errors.FlagDateValidateErr
 				}
 			}
+		case "l":
+			level = ctx.Int("l")
+			if level < entity.TodoLevelLow || level > entity.TodoLevelHigh {
+				return errors.FlagLevelValidateErr
+			}
+		case "s":
+			status = ctx.Int("s")
+			if status < entity.TodoStatusUncompleted || status > entity.TodoStatusDiscarded {
+				return errors.FlagStatusValidateErr
+			}
 		}
 	}
 
@@ -71,6 +95,12 @@ func List(ctx *cli.Context) error {
 	var todos []entity.Todo
 	for _, item := range data.Todos {
 		if !showAll && item.Date != date {
+			continue
+		}
+		if status != -1 && item.Status != status {
+			continue
+		}
+		if level != -1 && item.Level != level {
 			continue
 		}
 		todos = append(todos, item)

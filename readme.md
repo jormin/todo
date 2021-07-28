@@ -44,7 +44,10 @@ todo ls [command options]
 ```
 
 - -a: show all todo list (default: false)
-- -d: show todo list of one date (default: today)
+- -d: show todo list of one date, it's invalid when there is the flag a (default: today)
+- -l: the level of todo, optional values are 1-3, 1 is the minimum level and 3 is the maximum level (default: 1)
+- -s: the status of todo, optional values are 0-2[uncompleted|completed|discarded] (default: 0)
+
 
 ###### show all todo list
 
