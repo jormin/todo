@@ -39,7 +39,7 @@ func init() {
 				},
 				&cli.IntFlag{
 					Name:        "s",
-					Usage:       "the status of todo, optional values are 0-1, 0 means incomplete and 1 means completed",
+					Usage:       "the status of todo, optional values are 0-2[uncompleted|completed|discarded]",
 					Required:    false,
 					DefaultText: "0",
 				},
@@ -91,7 +91,7 @@ func Edit(ctx *cli.Context) error {
 			todo.Level = level
 		case "s":
 			status := ctx.Int("s")
-			if status < entity.TodoStatusUncompleted || status > entity.TodoStatusCompleted {
+			if status < entity.TodoStatusUncompleted || status > entity.TodoStatusDiscarded {
 				return errors.FlagStatusValidateErr
 			}
 			todo.Status = status

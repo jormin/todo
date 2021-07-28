@@ -83,7 +83,7 @@ todo add [command options] [content: todo content]
 
 - -d: the date of todo (default: today)
 - -l: the level of todo, optional values are 1-3, 1 is the minimum level and 3 is the maximum level (default: 1)
-- -s: the status of todo, optional values are 0-1, 0 means incomplete and 1 means completed (default: 0)
+- -s: the status of todo, optional values are 0-1, 0 means uncompleted and 1 means completed (default: 0)
 
 ```shell
 ➜  todo git:(master) ✗ todo add -d 20210630 -l 3 -s 0 "test for add"
@@ -99,7 +99,7 @@ todo edit [command options] [id: unique todo id]
 - -c: the content of todo
 - -d: the date of todo (default: today)
 - -l: the level of todo, optional values are 1-3, 1 is the minimum level and 3 is the maximum level (default: 1)
-- -s: the status of todo, optional values are 0-1, 0 means incomplete and 1 means completed (default: 0)
+- -s: the status of todo, optional values are 0-1, 0 means uncompleted and 1 means completed (default: 0)
 
 ```shell
 ➜  todo git:(master) ✗ todo edit -c "test for edit" -l 3 -s 0 c3en56g6n88j8kosta40

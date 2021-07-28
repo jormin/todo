@@ -19,8 +19,9 @@ const (
 	TodoLevelLow          = 1 // level: low
 	TodoLevelMiddle       = 2 // level: middle
 	TodoLevelHigh         = 3 // level: high
-	TodoStatusUncompleted = 0 // status: incomplete
+	TodoStatusUncompleted = 0 // status: uncompleted
 	TodoStatusCompleted   = 1 // status: completed
+	TodoStatusDiscarded   = 2 // status: discarded
 )
 
 // level texts
@@ -34,4 +35,5 @@ var TodoLevelTexts = map[int]string{
 var TodoStatusTexts = map[int]string{
 	0: "Uncompleted",
 	1: "Completed",
+	2: "Discarded",
 }

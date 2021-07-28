@@ -109,7 +109,7 @@ func List(ctx *cli.Context) error {
 	_, _ = fmt.Fprintf(w, defaultFormat, fmt.Sprintf(contentFormat, headers...))
 	for index, item := range todos {
 		format := defaultFormat
-		if item.Status == entity.TodoStatusCompleted {
+		if item.Status == entity.TodoStatusDiscarded || item.Status == entity.TodoStatusCompleted {
 			format = completedFormat
 		} else if item.Level == entity.TodoLevelHigh {
 			format = importantFormat
