@@ -25,6 +25,7 @@ DESCRIPTION:
 
 COMMANDS:
    add      add todo
+   discard  discard or reverse discard(with -r) todo
    do       do or undo(with -r) todo
    edit     edit todo
    ls       show config fund list
@@ -155,4 +156,38 @@ do todo c4008v06n88n0ufiph60 success
 undo todo c3vt9u86n88m1re06t1g success
 undo todo c3vtalg6n88m1v99t9j0 success
 undo todo c4008v06n88n0ufiph60 success
+```
+
+#### discard or reverse discard
+
+- -a: discard or reverse discard(with -r) all todo (default: false)
+- -r: reverse discard todo (default: false)
+- -s: the status to reverse, optional values are 0-1[uncompleted|completed] (default: 0)
+
+###### discard or reverse discard by id
+
+```shell
+➜  todo git:(master) ✗ todo discard c40ck3o6n88nq44oli9g   
+discard todo c40ck3o6n88nq44oli9g success
+
+➜  todo git:(master) ✗ todo discard -r -s 1 c40ck3o6n88nq44oli9g
+reverse discard todo c40ck3o6n88nq44oli9g success
+```
+
+###### discard or reverse discard all todos
+
+```shell
+➜  todo git:(master) ✗ todo discard -a 
+discard todo c401cg06n88n6cr92q70 success
+discard todo c401fng6n88n6qbf341g success
+discard todo c40ck3o6n88nq44oli9g success
+discard todo c3vt9u86n88m1re06t1g success
+discard todo c3vtalg6n88m1v99t9j0 success
+
+➜  todo git:(master) ✗ todo discard -a -r -s 1
+reverse discard todo c3vtalg6n88m1v99t9j0 success
+reverse discard todo c401cg06n88n6cr92q70 success
+reverse discard todo c401fng6n88n6qbf341g success
+reverse discard todo c40ck3o6n88nq44oli9g success
+reverse discard todo c3vt9u86n88m1re06t1g success
 ```
